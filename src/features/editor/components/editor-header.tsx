@@ -9,6 +9,7 @@ import { useSuspenseWorkflow, useUpdateWorkflowName } from "@/features/workflows
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { SaveIcon } from "lucide-react";
+import { set } from "zod";
 
  
 
@@ -24,18 +25,80 @@ export const EditorSaveButton = ({ workflowId}: { workflowId: string })=> {
     )
 };
 
+//Edit the input name
 export const EditorNameInput = ({ workflowId}: {workflowId: string}) => {
     const { data: workflow} = useSuspenseWorkflow(workflowId);
      const updateWorkflow = useUpdateWorkflowName();
 
+     const [isEditing, setIsEditing] = useState(false);
+     const [name, setName] = useState(workflow.name);
+
+     const inputRef = useRef<HTMLInputElement>(null);
+
+     useEffect(() =>{
+        if (workflow.name) {
+            setName(workflow.name);
+        }
+     }, [workflow.name]);
+
+     useEffect(() => {
+        if (isEditing && inputRef.current){
+            inputRef.current.focus();
+            inputRef.current.select();
+        }
+     },[isEditing]);
+
+     const handelSave = async() => {
+        if(name === workflow.name){
+            setIsEditing(false);
+            return;
+        }
+
+        
+
+        try{
+            await updateWorkflow.mutateAsync({
+                id: workflowId,
+                name,
+            });
+
+        } catch {
+            setName(workflow.name);
+        } finally {
+            setIsEditing(false);
+        }
+     };
+
+     const handleKeyDown =(e: React.KeyboardEvent) => {
+        if (e.key ==="Enter") {
+            handelSave();
+        }  else if (e.key ==="Escape"){
+            setName(workflow.name);
+            setIsEditing(false);
+        }
+     };
+
+     if (isEditing) {
+        return (
+            <Input
+                disabled={updateWorkflow.isPending}
+                ref={inputRef}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                onBlur={handelSave}
+                onKeyDown={handleKeyDown}
+                className="h-7 w-auto min-w-[100px] px-2"
+            />
+        )
+     }
+
      return (
-        <BreadcrumbItem className="cursor-pointer hover:text-foreground transition-colors">
+        <BreadcrumbItem onClick={() => setIsEditing(true)}
+        className="cursor-pointer hover:text-foreground transition-colors">
         {workflow.name}
         </BreadcrumbItem>
      )
-
 };
-
 
 export const Editorbreadcrumbs = ({ workflowId}: { workflowId: string })=> {
     return (
