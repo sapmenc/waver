@@ -12,7 +12,7 @@ interface workflowNodeProps {
     onDelete?: () => void;
     onSettings?: () => void;
     name?: string;
-    desciption?: string;
+    description?: string;
 };
 
 export function WorkflowNode ({
@@ -20,7 +20,8 @@ export function WorkflowNode ({
     showToolbar,
     onDelete,
     onSettings,
-    name,desciption,
+    name,
+    description,
 
 }: workflowNodeProps) {
     return (
@@ -45,9 +46,9 @@ export function WorkflowNode ({
                 <p className="font-medium">
                     {name}
                 </p>
-                {desciption && (
+                {description && (
                     <p className="text-muted-foreground truncate text-sm">
-                        {desciption}
+                        {description}
                     </p>
                 )}
             </NodeToolbar>
