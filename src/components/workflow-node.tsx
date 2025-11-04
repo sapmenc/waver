@@ -1,0 +1,57 @@
+"use client";
+
+import { NodeToolbar, Position } from "@xyflow/react";
+import { SettingsIcon, TrashIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import { ReactNode } from "react";
+import { Workflow } from "@/generated/prisma";
+
+interface workflowNodeProps {
+    children: ReactNode;
+    showToolbar: boolean;
+    onDelete?: () => void;
+    onSettings?: () => void;
+    name?: string;
+    desciption?: string;
+};
+
+export function WorkflowNode ({
+    children,
+    showToolbar,
+    onDelete,
+    onSettings,
+    name,desciption,
+
+}: workflowNodeProps) {
+    return (
+        <>
+         {showToolbar && (
+            <NodeToolbar>
+                <Button size="sm" variant="ghost" onClick={onSettings}>
+                    <SettingsIcon className="size-4"/>
+                </Button>
+                <Button size="sm" variant="ghost" onClick={onDelete}>
+                    <TrashIcon className="size-4"/>
+                </Button>
+            </NodeToolbar>
+         )}
+         {children}
+         {name && (
+            <NodeToolbar 
+            position={Position.Bottom}
+            isVisible
+            className="max-w-[200px] text-center"
+            >
+                <p className="font-medium">
+                    {name}
+                </p>
+                {desciption && (
+                    <p className="text-muted-foreground truncate text-sm">
+                        {desciption}
+                    </p>
+                )}
+            </NodeToolbar>
+         )}
+        </>
+    );
+};
