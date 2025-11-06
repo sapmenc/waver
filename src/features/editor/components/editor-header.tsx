@@ -4,19 +4,39 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbS
 import { Input } from "@/components/ui/input";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "lucide-react";
-import { useSuspenseWorkflow, useUpdateWorkflowName } from "@/features/workflows/hooks/use-workflows";
+import { useSuspenseWorkflow, useUpdateWorkflow, useUpdateWorkflowName } from "@/features/workflows/hooks/use-workflows";
 
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { SaveIcon } from "lucide-react";
 import { set } from "zod";
+import { useAtomValue} from 'jotai';
+import { editorAtom } from "../store/atoms";
 
  
 
 export const EditorSaveButton = ({ workflowId}: { workflowId: string })=> {
+    const editor = useAtomValue(editorAtom);
+    const saveWorkflow =useUpdateWorkflow();
+
+    const handelSave = () => {
+        if (!editor) {
+            return;
+        }
+
+        const nodes = editor.getNodes();
+        const edges = editor.getEdges();
+
+        saveWorkflow.mutate({
+            id: workflowId,
+            nodes,
+            edges,
+        });
+    }
+
     return (
         <div className="ml-auto">
-            <Button size="sm" onClick={() => {}} disabled={false}>
+            <Button size="sm" onClick={handelSave} disabled={saveWorkflow.isPending}>
                 <SaveIcon className="size-4"/>
                 Save
             </Button>
@@ -53,9 +73,6 @@ export const EditorNameInput = ({ workflowId}: {workflowId: string}) => {
             setIsEditing(false);
             return;
         }
-
-        
-
         try{
             await updateWorkflow.mutateAsync({
                 id: workflowId,

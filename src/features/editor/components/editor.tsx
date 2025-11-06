@@ -22,7 +22,9 @@ import { useSuspenseWorkflow } from "@/features/workflows/hooks/use-workflows";
 import '@xyflow/react/dist/style.css';
 import { Component } from 'lucide-react';
 import { nodeComponents } from '@/config/node-components';
-import { AddNodeButton } from './add.node.button';
+import { AddNodeButton } from './add-node-button';
+import {useSetAtom} from 'jotai';
+import { editorAtom } from '../store/atoms';
 
 
 export const EditorLoading = () => {
@@ -35,6 +37,8 @@ export const EditroError =() => {
 
 export const Editor = ({ workflowId }: {workflowId:string}) => {
     const { data: workflow} = useSuspenseWorkflow(workflowId);
+
+    const setEditor = useSetAtom(editorAtom);
 
     const [nodes, setNodes] = useState<Node[]>
     (workflow.nodes);
@@ -62,8 +66,14 @@ export const Editor = ({ workflowId }: {workflowId:string}) => {
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
-                fitView
                 nodeTypes={nodeComponents}
+                onInit={setEditor}
+                fitView
+                snapGrid={[10, 10]}
+                snapToGrid
+                panOnScroll
+                panOnDrag={false}
+                selectionOnDrag
               >  
                 <Background/>
                 <Controls/>
