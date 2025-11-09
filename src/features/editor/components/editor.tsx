@@ -74,10 +74,11 @@ export const Editor = ({ workflowId }: {workflowId:string}) => {
                 panOnScroll
                 panOnDrag={false}
                 selectionOnDrag
+                proOptions={{ hideAttribution: true }} //remove the Reat flow watermark
               >  
                 <Background/>
                 <Controls/>
-                <MiniMap/>  
+              
                 <Panel position ="top-right">
                     <AddNodeButton/>
 
