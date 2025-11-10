@@ -1,0 +1,49 @@
+import { connection } from 'next/server';
+import {Connection, Node } from './../generated/prisma';
+import toposort from "toposort";
+import { string } from 'zod';
+
+export const topologicalSort =(
+    nodes: Node[],
+    connections: Connection[],
+): Node[] => {
+    //if no connections lacks ending return statement and return type does not exist
+     if (connections.length === 0) {
+        return nodes;
+     }
+
+    //Create edges array for toposort
+    const edges: [string, string] [] = connections.map((conn) => [
+        conn.fromNodeID,
+        conn.toNodeID,
+    ]);
+
+    //ADD nodes with no connections as self-edges to ensure they're included
+    const connectionNodeIds = new Set<string>();
+    for (const conn of connections) {
+        connectionNodeIds.add(conn.fromNodeID);
+        connectionNodeIds.add(conn.toNodeID);
+    }
+     for (const node of nodes) {
+        if (!connectionNodeIds.has(node.id)){
+            edges.push([node.id, node.id]);
+        }
+     }
+
+     //Perform topological sort
+      let sortedNodeIds: string[];
+      try{
+        sortedNodeIds = toposort(edges);
+        //Remove duplicates ( from self-edges)
+        sortedNodeIds = [...new Set(sortedNodeIds)];
+      } catch (error) {
+        if (error instanceof Error && error.message.includes("Cyclic")){
+           throw new Error("Workflow contains a cycle");
+        }
+        throw error;
+      }
+
+      //map sorted IDs back to node objects
+      const nodeMap = new  Map(nodes.map((n) => [n.id,n]));
+      return sortedNodeIds.map((id) => nodeMap.get(id)!).filter(Boolean);
+}

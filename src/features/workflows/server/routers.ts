@@ -1,18 +1,33 @@
+import { Workflow } from './../../../generated/prisma/index.d';
 import {generateSlug} from "random-word-slugs";
 import prisma from "@/lib/db";
 import { type Node, type Edge, Position } from "@xyflow/react";
 import { createTRPCRouter, premiumProcedure, protectedProcedure } from "@/trpc/init";
 import z from "zod";
 import { PAGINATION } from "@/config/constants";
-import { CarTaxiFront } from "lucide-react";
-import { match } from "assert";
-import { create } from "domain";
 import { NodeType } from "@/generated/prisma";
-import { connection } from "next/server";
-import { connect } from "http2";
+import { inngest } from '@/inngest/client';
 
 //create procedure
 export const workflowRouter = createTRPCRouter({
+    execute: protectedProcedure
+        .input(z.object({id: z.string() }))
+        .mutation(async({input, ctx}) => {
+            const workflow = await prisma.workflow.findUniqueOrThrow({
+                where: {
+                    id: input.id,
+                    userId: ctx.auth.user.id,
+                },
+            });
+
+            await inngest.send({
+                name: "workflows/execute.workflow",
+                data: { workflowId: input.id},
+            });
+
+            return workflow; 
+        }),
+
     create: premiumProcedure.mutation(({ ctx }) => {
         return prisma.workflow.create({
             data: {
