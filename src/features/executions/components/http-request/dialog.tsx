@@ -98,7 +98,7 @@ export const HttpRequestDialog = ({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent>
+            <DialogContent className="max-h-[80vh] overflow-y-auto">
                 <DialogHeader>
                     <DialogTitle>Http Request</DialogTitle>
                     <DialogDescription>
@@ -154,7 +154,7 @@ export const HttpRequestDialog = ({
                                     </SelectContent>
                                 </Select>
                                 <FormDescription>
-                                    The HTTP methof to use for this request
+                                    The HTTP method to use for this request
                                 </FormDescription>
                                 <FormMessage/>
                             </FormItem>
