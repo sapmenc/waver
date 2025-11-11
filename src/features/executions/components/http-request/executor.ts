@@ -2,6 +2,7 @@ import Handlebars from "handlebars";
 import type { NodeExecutor } from "@/features/executions/types";
 import { NonRetriableError } from "inngest";
 import ky, {type Options as KyOptions } from "ky";
+import { httpRequestChannel } from "@/inngest/channels/http-request";
 
 Handlebars.registerHelper("json", (context) =>{
     const jsonString = JSON.stringify(context, null , 2);
@@ -22,24 +23,46 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async({
     nodeId,
     context,
     step,
+    publish,
 }) => {
-    //TODO: Publish "loading" state for hhtp request
+    await publish(
+        httpRequestChannel().status({
+            nodeId,
+            status: "loading",
+        }),
+    );
+
     if (!data.endpoint) {
-        //TODO: Publish "error" state for hhtp reques
-        throw new NonRetriableError("HTTP Request node: NO endpoint configured");
+        await publish(
+            httpRequestChannel().status({
+                nodeId,
+                status: "error",
+            }),
+        );        throw new NonRetriableError("HTTP Request node: NO endpoint configured");
 
     }
     if (!data.variableName ) {
-        //TODO: Publish "error" state for hhtp reques
+        await publish(
+            httpRequestChannel().status({
+                nodeId,
+                status: "error",
+            }),
+        );
         throw new NonRetriableError("Variable name not configured");
 
     }
-        if (!data.method ) {
-        //TODO: Publish "error" state for hhtp reques
+    if (!data.method ) {
+        await publish(
+             httpRequestChannel().status({
+                 nodeId,
+                status: "error",
+            }),
+        );       
         throw new NonRetriableError("Method not configured");
 
     }
 
+    try{
     const result = await step.run("http-request", async() => {
         const endpoint = Handlebars.compile(data.endpoint)(context);
         console.log("ENDPOINT", {endpoint});
@@ -77,7 +100,20 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async({
         }
     });
 
-    //TODO: Publish "success" state for hhtp request
-
+    await publish(
+        httpRequestChannel().status({
+            nodeId,
+            status: "success",
+        }),
+    );
     return result;
+    } catch (error){
+        await publish(
+            httpRequestChannel().status({
+                nodeId,
+                status: "error",
+            }),
+        );
+        throw error;
+    }
 };
