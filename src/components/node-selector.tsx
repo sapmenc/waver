@@ -31,11 +31,17 @@ import {
         description: "Runs the flow on clicking a button. Good for getting started quickly",
         icon: MousePointerIcon,
     },
-        {
+    {
         type: NodeType.GOOGLE_FORM_TRIGGER,
         lable: "Google Form ",
         description: "Triggers the flow when a Google Form is submitted",
         icon: "/logos/googleform.svg",
+    },
+    {
+        type: NodeType.STRIPE_TRIGGER,
+        lable: "Stripe",
+        description: "Triggers the flow when a Stripe event is captured",
+        icon: "/logos/stripe.svg",
     },
  ];
 

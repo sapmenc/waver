@@ -1,7 +1,5 @@
 import { sendWorkflowExecution } from "@/inngest/utils";
-import { raw } from "@prisma/client/runtime/library";
 import { type NextRequest, NextResponse } from "next/server";
-import { success } from "zod";
 
 export async function POST(request: NextRequest) {
     try {
@@ -16,31 +14,32 @@ export async function POST(request: NextRequest) {
 
         const body = await request.json();
 
-        const formData = {
-            formId: body.formId,
-            formTitle: body.formTitle,
-            responseId: body.responseId,
-            timestamp: body.timestamp,
-            respondentEmail: body.respondentEmail,
-            responses: body.responses,
-            raw : body,
+        const stripeData = {
+            //Event metadata
+            eventId: body.id,
+            eventType: body.type,
+            timestamp: body.created,
+            livemode: body.livemode,
+            raw: body.data?.object,
         };
 
         //Trigger an inngest job
         await sendWorkflowExecution({
             workflowId,
             initialData: {
-                googleForm: formData,
+                stripe: stripeData,
             }
         });
+
         return NextResponse.json(
             {success: true},
             {status: 200}
         );
+        
     } catch (error) {
-        console.error(" Google Form webhook error:", error);
+        console.error(" Stripe webhook error:", error);
         return NextResponse.json(
-            {success: false, error: "Failed to process Google Form submission."},
+            {success: false, error: "Failed to process Stripe webhook."},
             {status: 500}
         );
     }

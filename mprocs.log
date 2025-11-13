@@ -183,3 +183,78 @@ WARN [mprocs::app] Ignore input event: FocusLost
 WARN [mprocs::app] Ignore input event: FocusGained
 WARN [mprocs::app] Ignore input event: FocusLost
 WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+WARN [mprocs::app] Ignore input event: FocusLost
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+WARN [mprocs::app] Ignore input event: FocusLost
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run ngrok:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+ERROR [portable_pty::win::psuedocon] CreateProcessW `"cmd.exe /S /C npm run inngest:dev\0"` in cwd `Some("D:\\SapmenC\\Project\\waver\0")` failed: The system cannot find the file specified. (os error 2)
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
+WARN [mprocs::app] Ignore input event: FocusGained
+WARN [mprocs::app] Ignore input event: FocusLost
