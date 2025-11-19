@@ -144,10 +144,24 @@ Create a .env file in the root directory:
 DATABASE_URL="postgresql://neondb_owner:npg_0LpvoBs1ASix@ep-lively-bonus-ad9mcbva-pooler.c-2.us-east-1.aws.neon.tech/neondb?sslmode=require"
 
 # Better auth security
-BETTER_AUTH_SECRET="hZ56PucZkfkyXZNMKo6lEkkiOSmOEzxc"
+BETTER_AUTH_SECRET=YOUR_BETTER_AUTH_SECRET
 
 # Base URL of your app
 BETTER_AUTH_URL="http://localhost:3000"
+
+# github OAuth
+GITHUB_CLIENT_ID=YOUR_GITHUB_CLIENT_ID
+GITHUB_CLIENT_SECRET=YOUR_GITHUB_CLIENT_SECRET
+
+# google OAuth
+GOOGLE_CLIENT_ID=YOUR_GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET=YOUR_GOOGLE_CLIENT_SECRET
+
+#OpenAI
+OPENAI_API_KEY=""
+
+#Anthropic
+ANTHROPIC_API_KEY=""
 
 
 # google generative AI
@@ -161,6 +175,15 @@ POLAR_ACCESS_TOKEN="polar_oat_jmokkcw9Dlgdxqu9WXGS0zUJXbn5hvBYkr0jP0uCV36"
 
 #polar success url
 POLAR_SUCCESS_URL="http://localhost:3000"
+
+#other
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
+
+NGROK_URL="christene-unprecipitated-jangly.ngrok-free.dev"
+
+
+# Encryption
+ENCRYPTION_KEY="my-secure-key"
 ```
 
 ---
@@ -253,11 +276,67 @@ Useful for checking schema, testing relationships, and debugging data during dev
 ### 16. Node Selector
 - Add Manual Trigger & HTTP Request nodes
 - Create node selector
-- Enable editor save functionality.
+- Enable editor save functionality
 
 ### 17. Editor State
 - Fix CodeRabbit bugs (onclick handlers, type casts)
 - Add Save/Delete/Settings features
+
+---
+## 18. Node Execution
+- Execute workflow via Manual Trigger  
+- Real HTTP calls inside nodes  
+- Order-based execution
+
+## 19. Node Variables
+- Add `variableName` field  
+- Output stored as `context[variableName]`
+
+## 20. Node Templating
+- `{{ variableName }}` syntax  
+- Dynamic HTTP body + endpoint
+
+## 21. Node Realtime
+- Inngest Realtime events  
+- Live node status updates  
+- `useNodeStatus()` hook
+
+## 22. Google Form Trigger
+- Google Forms → Apps Script → Webhook  
+- Workflow triggers on submission
+
+## 23. Stripe Trigger
+- Stripe Webhook integration  
+- Supports payment events
+
+## 24. AI Nodes
+- Gemini / OpenAI / Anthropic  
+- Executes prompts → returns output
+
+## 25. Credentials
+- Full Credential CRUD  
+- Pagination, Search, Loading, Empty states  
+- Linked with nodes using credentialId
+
+## 26. Discord & Slack Nodes
+- Discord webhook executor  
+- Slack webhook executor  
+- Dialog + executor + realtime integration
+
+## 27. Executions History
+- Execution schema + router  
+- Track workflow runs  
+- UI listing with pagination
+
+## 28. Encrypting Credentials
+- Encrypted storage of API keys  
+- Runtime decryption for nodes  
+- Secure credential flow
+
+## 29. GitHub & Google Auth
+- OAuth providers added  
+- Buttons added to login  
+- Integrates with BetterAuth sessions
 
 ---
 
