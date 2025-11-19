@@ -3,6 +3,7 @@ import prisma from "@/lib/db";
 import { createTRPCRouter, premiumProcedure, protectedProcedure } from "@/trpc/init";
 import z from "zod";
 import { PAGINATION } from "@/config/constants";
+import { encrypt } from '@/lib/encryption';
 
 
 //create procedure
@@ -23,7 +24,7 @@ export const credentialsRouter = createTRPCRouter({
                 name,
                 userId: ctx.auth.user.id,
                 type,
-                value, //TODO: conside recrypting in production
+                value: encrypt(value),
             },
         });
     }),
@@ -39,7 +40,8 @@ export const credentialsRouter = createTRPCRouter({
                 },
             })
         }),
-        update: protectedProcedure
+//update procedure
+ update: protectedProcedure
         .input(
             z.object(
                 {id: z.string(),
@@ -56,7 +58,7 @@ export const credentialsRouter = createTRPCRouter({
                 data: {
                     name,
                     type,
-                    value
+                    value: encrypt(value),
                 }
             });
         }),
