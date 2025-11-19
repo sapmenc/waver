@@ -12,7 +12,22 @@ export const auth = betterAuth({
         enabled: true,
         autoSignIn: true,
     },
+    
+    //for github auth
+    socialProviders: {
+        github: { 
+            clientId: process.env.GITHUB_CLIENT_ID as string, 
+            clientSecret: process.env.GITHUB_CLIENT_SECRET as string, 
+        },
+        //for google auth
+        google: { 
+            clientId: process.env.GOOGLE_CLIENT_ID as string, 
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
+        },
+    },
 
+    
+    
     plugins: [
         polar({
             client: polarClient,

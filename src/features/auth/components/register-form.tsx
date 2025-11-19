@@ -48,6 +48,37 @@ export default function RegisterForm(){
         },
     });
 
+    //signin with github
+        const signInGithub = async() => {
+            await authClient.signIn.social({
+                provider: "github",
+            }, {
+                onSuccess: () => {
+                    router.push("/");
+    
+                },
+                onError: () => {
+                    toast.error("Something went wrong");
+                },
+            });
+        };
+    
+        //signin with github
+        const signInGoogle = async() => {
+            await authClient.signIn.social({
+                provider: "google",
+            }, {
+                onSuccess: () => {
+                    router.push("/");
+    
+                },
+                onError: () => {
+                    toast.error("Something went wrong");
+                },
+            });
+        };
+    
+
     const onSubmit = async (values: RegisterFormValues) => {
         await authClient.signUp.email(
             {
@@ -87,6 +118,7 @@ export default function RegisterForm(){
                             <div className="grid gap-4">
                               <div className="flex flex-col gap-4">
                                 <Button
+                                    onClick={signInGithub}
                                     variant="outline"
                                     className="w-full"
                                     type="button"
@@ -100,7 +132,8 @@ export default function RegisterForm(){
                                     />
                                     Continue with GitHub
                                 </Button>
-                                                                <Button
+                                <Button
+                                    onClick={signInGoogle}
                                     variant="outline"
                                     className="w-full"
                                     type="button"
