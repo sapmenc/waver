@@ -253,7 +253,7 @@ Useful for checking schema, testing relationships, and debugging data during dev
 ### 16. Node Selector
 - Add Manual Trigger & HTTP Request nodes
 - Create node selector
-- Enable editor save functionality
+- Enable editor save functionality.
 
 ### 17. Editor State
 - Fix CodeRabbit bugs (onclick handlers, type casts)
