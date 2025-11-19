@@ -1,8 +1,7 @@
-import { connection } from 'next/server';
 import {Connection, Node } from './../generated/prisma';
 import toposort from "toposort";
-import { string } from 'zod';
 import { inngest } from './client';
+import { createId } from '@paralleldrive/cuid2';
 
 export const topologicalSort =(
     nodes: Node[],
@@ -57,5 +56,6 @@ export const topologicalSort =(
         return inngest.send({
           name: "workflows/execute.workflow",
           data,
+          id: createId(),
         }); 
     };

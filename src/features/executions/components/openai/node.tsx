@@ -2,7 +2,7 @@
 import { Node,NodeProps, useReactFlow } from "@xyflow/react";
 import {memo, useState} from "react";
 import { BaseExecutionNode } from "../base-execution-node";
-import { useNodeStatus } from "../../hooks/use-node";
+import { useNodeStatus } from "../../hooks/use-node-status";
 import { fetchOpenAiToken } from "./actions";
 import { OpenAiDialog, OpenAiFormValues } from "./dialog";
 import { OPENAI_CHANNEL_NAME } from "@/inngest/channels/openai";

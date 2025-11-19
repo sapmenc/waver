@@ -75,7 +75,7 @@ export const CredentialsList = () => {
         disabled={credentials.isFetching}
         totalPages={credentials.data.totalPages}
         page={credentials.data.page}
-        onPageChange={(page) => setParams({...PathParamsContext, page})}
+        onPageChange={(page) => setParams({...params, page})}
         />
     );
  };

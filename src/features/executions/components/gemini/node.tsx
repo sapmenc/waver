@@ -3,7 +3,7 @@ import { Node,NodeProps, useReactFlow } from "@xyflow/react";
 import {memo, useState} from "react";
 import { BaseExecutionNode } from "../base-execution-node";
 import { GeminiDialog, GeminiFormValues } from "./dialog";
-import { useNodeStatus } from "../../hooks/use-node";
+import { useNodeStatus } from "../../hooks/use-node-status";
 import { fetchGeminiToken } from "./actions";
 import { GEMINI_CHANNEL_NAME } from "@/inngest/channels/gemini";
 

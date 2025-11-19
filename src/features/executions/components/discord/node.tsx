@@ -3,7 +3,7 @@ import { Node,NodeProps, useReactFlow } from "@xyflow/react";
 import {memo, useState} from "react";
 import { BaseExecutionNode } from "../base-execution-node";
 import { DiscordDialog, DiscordFormValues } from "./dialog";
-import { useNodeStatus } from "../../hooks/use-node";
+import { useNodeStatus } from "../../hooks/use-node-status";
 import { fetchDiscordoken } from "./actions";
 import { DISCORD_CHANNEL_NAME } from "@/inngest/channels/discord";
 
