@@ -205,7 +205,7 @@ export const CredentialForm = ({
                                         asChild
                                     >
                                         <Link href="/credentials">
-                                          Cancle
+                                          Cancel
                                         </Link>
                                     </Button>
                                 </div>
