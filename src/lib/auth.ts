@@ -5,6 +5,7 @@ import  prisma  from "@/lib/db";
 import { polarClient } from "./polar";
 
 export const auth = betterAuth({
+    baseURL: process.env.BETTER_AUTH_URL!, // for mobile oAuth bug fixing
     database: prismaAdapter(prisma,{
         provider: "postgresql",
     }),
